@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if 'email' in session %}
+        My Booking - Search
+    {%else%}
+        Sign-up to join the battle
+    {% endif %}
+{% endblock %}
+
+{% block user %}
+    {% if 'email' in session %}
+        {{ fname }}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% if 'email' in session %}
+        <h2>Welcome to {{fname}}'s Projects page</h2>
+        <p>This is the Projects content of {{fname}}</p>
+    {%else%}
+        <h2>Welcome to My Website</h2>
+        <p>This is the Features page content.</p>
+{% endif %}  
+    
+{% endblock %}

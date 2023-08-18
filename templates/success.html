@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %}Success Page{% endblock %}
+{% block content %}
+{% block header %} {% endblock %}
+<body>
+  {% include "loginstyle.html" %}
+  <div class="signup-box container-fluid">
+    <center><h3>Success!</h3></center>
+    <form action="/home" method="GET">
+      <div class="input-group mb-3">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1">From</button>
+        <input type="text" class="form-control" value="{{ from_location }}" aria-label="Example text with button addon" disabled readonly  aria-describedby="button-addon1">
+      </div>      
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" value="{{ to_location }}" aria-label="Recipient's username" disabled readonly aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2">To</button>
+      </div>
+      <div class="input-group mb-3">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1">Date of Travel</button>
+        <input type="text" class="form-control" value="{{travel_date}}" aria-label="Example text with button addon" disabled readonly  aria-describedby="button-addon1">
+      </div>      
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" value="{{ passenger_count }}" aria-label="Recipient's username" disabled readonly aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2">No. of Passengers</button>
+      </div>      
+      <center><strong>Passenger Name(s)</strong></center>
+      {% if passenger_count =="1" %}
+      <div class="input-group mb-3">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1">#1</button>
+        <input type="text" class="form-control" value="{{ passenger_name_1 }}" aria-label="Example text with button addon" disabled readonly  aria-describedby="button-addon1">
+      </div>
+      {% elif passenger_count =="2" %}
+      <div class="input-group mb-3">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1">#1</button>
+        <input type="text" class="form-control" value="{{ passenger_name_1 }}" aria-label="Example text with button addon" disabled readonly  aria-describedby="button-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1">#2</button>
+        <input type="text" class="form-control" value="{{ passenger_name_2 }}" aria-label="Example text with button addon" disabled readonly  aria-describedby="button-addon1">
+      </div>
+      {% elif passenger_count =="3"%}
+      <div class="input-group mb-3">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1">#1</button>
+        <input type="text" class="form-control" value="{{ passenger_name_1 }}" aria-label="Example text with button addon" disabled readonly  aria-describedby="button-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1">#2</button>
+        <input type="text" class="form-control" value="{{ passenger_name_2 }}" aria-label="Example text with button addon" disabled readonly  aria-describedby="button-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1">#3</button>
+        <input type="text" class="form-control" value="{{ passenger_name_3 }}" aria-label="Example text with button addon" disabled readonly  aria-describedby="button-addon1">
+      </div>
+      {% else %}
+      <div class="input-group mb-3">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1">#1</button>
+        <input type="text" class="form-control" value="{{ passenger_name_1 }}" aria-label="Example text with button addon" disabled readonly  aria-describedby="button-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1">#2</button>
+        <input type="text" class="form-control" value="{{ passenger_name_2 }}" aria-label="Example text with button addon" disabled readonly  aria-describedby="button-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1">#3</button>
+        <input type="text" class="form-control" value="{{ passenger_name_3 }}" aria-label="Example text with button addon" disabled readonly  aria-describedby="button-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1">#4</button>
+        <input type="text" class="form-control" value="{{ passenger_name_4 }}" aria-label="Example text with button addon" disabled readonly  aria-describedby="button-addon1">
+      </div>
+      {% endif %}
+      <br>
+      <center><button type="submit" class="btn btn-success">To Home</button></center>
+    </form>  
+  </div>
+</body>
+{% endblock %}
+
+

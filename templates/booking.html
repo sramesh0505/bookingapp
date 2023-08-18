@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}Booking Page{% endblock %}
+{% block content %}
+{% block header %} {% endblock %}
+<body>
+  {% include "loginstyle.html" %}
+  <div class="signup-box container-fluid">
+    <center><h3>Booking Page</h3></center>
+    <form action="/passengerdetails" method="GET" onsubmit="return validateForm()">
+      <label for="from">From:</label>
+      <select class="form-select" aria-label="Default select example" id="from" name="from">
+        <option value="Chennai">Chennai</option>
+        <option value="Bengaluru">Bengaluru</option>
+        <option value="Hyderabad">Hyderabad</option>
+        <option value="Coimbatore">Coimbatore</option>     
+      </select>
+      
+      <label for="to">To:</label>
+      <select class="form-select" aria-label="Default select example" id="to" name="to">
+        <option value="Chennai">Chennai</option>
+        <option value="Bengaluru">Bengaluru</option>
+        <option value="Hyderabad">Hyderabad</option>
+        <option value="Coimbatore">Coimbatore</option>
+      </select>
+      
+      <label for="date">Date of Travel:</label>
+      <input type="date" id="date" name="date" class="form-input" required>
+
+      
+      <label for="passengers" >No. of Passengers:</label>
+      <input type="number" id="passengers" name="passengers" min="1" max="4" class="form-input" required>
+      
+      <label for="berth_class" >Berth class:</label>
+      <select name="berth_class" id="berth_class" class="form-select">
+        <option value="Economic" class="list-group-item">Economic</option>
+        <option value="Business" class="list-group-item">Business</option>
+      </select>
+      <br>
+      <center><button type="submit" class="btn btn-success">To Booking</button></center>
+    </form>  
+  </div>
+  <script>
+    function validateForm() {
+      var fromSelect = document.getElementById('from');
+      var toSelect = document.getElementById('to');
+      
+      if (fromSelect.value === toSelect.value) {
+        alert('Error: From and To city cannot be the same.');
+        alert('Please do open your eyes.');
+        return false;
+      }
+      
+      return true;
+    }
+  </script>
+  <script>
+    // Get the current date
+    var currentDate = new Date();
+
+    // Calculate the maximum date by adding 90 days to the current date
+    var maxDate = new Date(currentDate.getTime() + (90 * 24 * 60 * 60 * 1000));
+    
+    // Format the minimum and maximum dates to YYYY-MM-DD
+    var formattedMinDate = currentDate.toISOString().split('T')[0];
+    var formattedMaxDate = maxDate.toISOString().split('T')[0];
+    
+    // Set the min and max attributes of the input
+    document.getElementById('date').setAttribute('min', formattedMinDate);
+    document.getElementById('date').setAttribute('max', formattedMaxDate);
+</script>
+</body>
+{% endblock %}

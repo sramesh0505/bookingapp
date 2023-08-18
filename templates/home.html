@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block user %}
+    {% if 'email' in session %}
+        {{ fname }}
+    {% endif %}
+{% endblock %}
+{% block content %}
+    {% if 'email' in session %}
+        <h2>Welcome to {{ fname }}'s Home </h2>
+        <p>This is the Home page content of {{fname}}.</p>
+    {% else %}
+        <h2>Welcome to Homepage </h2>
+        <p>This is the Guest Home</p>
+    {% endif %}
+{% endblock %}
+
+{% block title %}
+    {% if 'email' in session %}
+        Home of {{ fname }}'s Website
+    {% else %}
+        Home - My Website
+    {% endif %}
+{% endblock %}

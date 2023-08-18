@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{{ url_for('index')}}"><i class="bi bi-bus-front"></i>Logo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('home') }}">Home</a>
+          </li>
+          {% if 'email' in session %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('booking') }}">Travel</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a id="location-link" class="nav-link disabled">Location</a>
+          </li>
+          {%endif%}
+          {% if 'email' in session %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                </li>
+            {% endif %}
+        {% if 'email' in session %}  
+          <li class="nav-item">
+            <a class="nav-link disabled">{%block user%}{%endblock%}</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('signup') }}">Sign-up</a>
+          </li>
+        {%endif%}
+        </ul>
+      </div>
+    </div>
+</nav>
+  

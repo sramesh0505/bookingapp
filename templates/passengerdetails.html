@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %}Passenger Details{% endblock %}
+{% block header %}
+{% endblock %}
+{% block content %}
+{% include "loginstyle.html" %}
+<div class="signup-box container-fluid">
+  <p><center><strong>Details of Travel</strong></center></p>
+  <form action="/success" method="POST">
+    <div class="input-group mb-3">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon1">From</button>
+      <input type="text" name="from_location" class="form-control" value="{{ from_location }}" readonly>
+    </div>    
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" name="to_location" value="{{ to_location }}" readonly>
+      <button class="btn btn-outline-secondary" type="button" id="button-addon2">To</button>
+  </div>
+    <div class="input-group mb-3">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon1">Date of Travel</button>
+      <input type="text" name="travel_date" class="form-control" value="{{travel_date}}" readonly>
+    </div>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" name="passenger_count" value="{{ passenger_count }}" readonly>
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2">No. of Passengers</button>
+    </div>
+    <div class="input-group mb-3">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon1">Class</button>
+      <input type="text" name="berth_class" class="form-control" value="{{ berth_class }}" readonly>
+    </div>
+    <center><strong>Passenger Names</strong></center>
+    {% if passenger_count =="1" %}
+    <div class="input-group mb-3">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon1">#1</button>
+      <input type="text" name="passenger_name-1" class="form-control" required >
+    </div>    
+    {% elif passenger_count =="2" %}
+    <div class="input-group mb-3">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon1">#1</button>
+      <input type="text" name="passenger_name-1" class="form-control" required >
+    </div>
+    <div class="input-group mb-3">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon1">#2</button>
+      <input type="text" name="passenger_name-2" class="form-control" required >
+    </div>
+    {% elif passenger_count =="3"%}
+    <div class="input-group mb-3">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon1">#1</button>
+      <input type="text" name="passenger_name-1" class="form-control" required >
+    </div>
+    <div class="input-group mb-3">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon1">#2</button>
+      <input type="text" name="passenger_name-2" class="form-control" required >
+    </div>
+    <div class="input-group mb-3">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon1">#3</button>
+      <input type="text" name="passenger_name-3" class="form-control" required >
+    </div>
+    {% else %}
+    <div class="input-group mb-3">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon1">#1</button>
+      <input type="text" name="passenger_name-1" class="form-control" required >
+    </div>
+    <div class="input-group mb-3">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon1">#2</button>
+      <input type="text" name="passenger_name-2" class="form-control" required >
+    </div>
+    <div class="input-group mb-3">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon1">#3</button>
+      <input type="text" name="passenger_name-3" class="form-control" required >
+    </div>
+    <div class="input-group mb-3">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon1">#4</button>
+      <input type="text" name="passenger_name-4" class="form-control" required >
+    </div>
+    {% endif %}
+    <center><button type="submit" class="btn btn-success">Confirm and Checkout</button></center>
+  </form>
+</div>
+{% endblock %}

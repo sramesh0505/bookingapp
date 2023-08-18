@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Sign-Up - My Website{% endblock %}
+{% block content %}
+{% block header %} {% endblock %}
+<body>
+  {% include "loginstyle.html" %}
+  <div class="signup-box">
+    <h1>Sign Up</h1>
+    <form action="/signup" method="POST" onsubmit="return validateForm()">
+      <label id="fname" >First Name</label>
+      <input type="text" name="fname" id="fname" placeholder="" />
+      <label id="lname">Last Name</label>
+      <input type="text" name="lname" id="lname"  placeholder="" />
+      <label id=" email">Email</label>
+      <input type="email" name="email" id="email"  placeholder="" />
+      <label id="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="" />
+      <label id="confirm-password">Confirm Password</label>
+      <input type="password" id="confirm-password" placeholder="" />
+      <input type="submit" value="Submit" />
+    </form>
+  </div>
+  <p class="para-2">
+    Already have an account? <a href="{{ url_for('login') }}">Login here</a>
+  </p>
+</body>
+
+<script>
+  function validateForm() {
+    var password = document.getElementById("password").value;
+    var confirmPwd = document.getElementById("confirm-password").value;
+
+    if (password !== confirmPwd) {
+      alert("Passwords do not match.");
+      return false;
+    }
+  }
+</script>
+{% endblock %}
